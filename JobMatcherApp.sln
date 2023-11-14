@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobMatcherApp", "JobMatcherApp\JobMatcherApp.csproj", "{5ED88CB0-B8BE-469E-8832-8DDAEBD864BF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobMatcherTests", "JobMatcherTests\JobMatcherTests.csproj", "{BC2994BF-C54E-4CF5-90C7-DC53EB377DDB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5ED88CB0-B8BE-469E-8832-8DDAEBD864BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5ED88CB0-B8BE-469E-8832-8DDAEBD864BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5ED88CB0-B8BE-469E-8832-8DDAEBD864BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC2994BF-C54E-4CF5-90C7-DC53EB377DDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC2994BF-C54E-4CF5-90C7-DC53EB377DDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC2994BF-C54E-4CF5-90C7-DC53EB377DDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC2994BF-C54E-4CF5-90C7-DC53EB377DDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

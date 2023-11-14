@@ -1,10 +1,10 @@
 ﻿namespace JobMatcherApp
 {
-    internal class VehicleToJobMatcher
+    public class VehicleToJobMatcher
     {
         public List<Vehicle> AvailableVehicles { get; set; }
         public List<Job> AvailableJobs { get; set; }
-        public List<Job> FaildJobs { get; set; }
+        public List<Job> FailedJobs { get; set; }
         public Dictionary<Vehicle, Job> PairedJobs { get; set; }
 
         public VehicleToJobMatcher(List<Vehicle> availableVehicles, List<Job> availableJobs)
@@ -12,7 +12,7 @@
             AvailableVehicles = availableVehicles;
             AvailableJobs = availableJobs;
             PairedJobs = new Dictionary<Vehicle, Job>();
-            FaildJobs = new List<Job>();
+            FailedJobs = new List<Job>();
         }
 
         public void MatchVehiclesToJobs()
@@ -47,7 +47,7 @@
                 //There is no available vehicles for the job
                 if (jobCompatibleVehicles.Count == 0)
                 {
-                    FaildJobs.Add(job);
+                    FailedJobs.Add(job);
                     AvailableJobs.Remove(job);
                     continue;
                 }
@@ -74,8 +74,9 @@
             }
         }
 
+        // prefer to set the next 3 methods to private, change to public just for the unit tests
         //Check how much OTHER jobtype could be ordered to a vehicle
-        private Dictionary<int, int> CountDemandsForVehicles(List<Vehicle> jobCompatibleVehicles)
+        public Dictionary<int, int> CountDemandsForVehicles(List<Vehicle> jobCompatibleVehicles)
         {
             Dictionary<int, int> vehicleDemandsPairs = new Dictionary<int, int>();
             foreach (Vehicle vehicle in jobCompatibleVehicles)
@@ -90,12 +91,12 @@
 
             return vehicleDemandsPairs;
         }
-
-        private List<Vehicle> getAllSpecificJobCompatibleVehicles(List<Vehicle> vehicles, string jobType)
+        
+        public List<Vehicle> getAllSpecificJobCompatibleVehicles(List<Vehicle> vehicles, string jobType)
         {
             return vehicles.Where(t => t.CompatibleJobTypes.Contains(jobType)).ToList();
         }
-        private List<Vehicle> getAllSingleCababilityVehicles(List<Vehicle> vehicles)
+        public List<Vehicle> getAllSingleCababilityVehicles(List<Vehicle> vehicles)
         {
             return vehicles.Where(t => t.CompatibleJobTypes.Length == 1).ToList();
         }

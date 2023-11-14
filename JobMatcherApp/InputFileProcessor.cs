@@ -1,32 +1,29 @@
 ﻿namespace JobMatcherApp
 {
-    internal class InputFileProcessor
+    public class InputFileProcessor
     {
-        private string inputfile = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\data\mediordev.txt";
-
-        public InputFileProcessor()
+        public (List<Vehicle>, List<Job>) ProcessDataFromFile(string inputFile)
         {
-            if (!File.Exists(inputfile))
+            if (File.Exists(inputFile))
+            {
+                string[] allLines = File.ReadAllLines(inputFile);
+                int numberOfVehicles = int.Parse(allLines[0]);
+
+                List<Vehicle> vehicles = processVehicles(allLines, numberOfVehicles);
+
+                int numberOJobs = int.Parse(allLines[numberOfVehicles + 1]);
+
+                string[] jobLines = new string[numberOJobs];
+
+                Array.Copy(allLines, numberOfVehicles + 2, jobLines, 0, numberOJobs);
+
+                List<Job> jobs = processJobs(jobLines, numberOJobs);
+                return (vehicles, jobs);
+            }
+            else
             {
                 throw new FileNotFoundException("No file was found.");
             }
-        }
-
-        public (List<Vehicle>, List<Job>) ProcessDataFromFile()
-        {
-            string[] allLines = File.ReadAllLines(inputfile);
-            int numberOfVehicles = int.Parse(allLines[0]);
-
-            List<Vehicle> vehicles = processVehicles(allLines, numberOfVehicles);
-
-            int numberOJobs = int.Parse(allLines[numberOfVehicles + 1]);
-
-            string[] jobLines = new string[numberOJobs];
-
-            Array.Copy(allLines, numberOfVehicles + 2, jobLines, 0, numberOJobs);
-
-            List<Job> jobs = processJobs(jobLines, numberOJobs);
-            return (vehicles, jobs);
         }
 
         private List<Job> processJobs(string[] lines, int numberOJobs)
