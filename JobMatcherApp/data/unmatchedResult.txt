@@ -1,0 +1,5 @@
+<Vehicle ID>	<Compatible jobtypes>
+903	B, C, D, F
+
+<Job ID>	<Job type>
+1000	A
