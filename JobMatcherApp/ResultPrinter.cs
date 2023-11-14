@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JobMatcherApp
+﻿namespace JobMatcherApp
 {
-    internal class ResultPrinter
+    public class ResultPrinter
     {
         private string outputFileForPairs = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\data\pairedResult.txt";
         private string outputFileForUnmatched = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\data\unmatchedResult.txt";
